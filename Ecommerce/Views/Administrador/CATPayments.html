@@ -1,0 +1,313 @@
+﻿<div data-role="view" data-title="CATPayments" data-layout="main" style="" data-init="InicializaCATPayments" data-reload="true">
+    <div style="background-color:#b2b2b2; height:70px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+        <div style="text-align:left; width:50%;">
+            &nbsp;
+            <img src="" width="188px" style="cursor: pointer;" onclick="IrAMenuPrincipal()" />
+            <!--<a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;">SOS Madisa</a>-->
+        </div>
+        <div style="text-align:right; width:50%; vertical-align:middle; height:80px;">
+            <table style="height:79px;" align="right">
+                <tr>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;"><label id="lblUserNameResultados"></label></a>
+                    </td>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;">&nbsp;|&nbsp;</a>
+                    </td>
+                    <td>
+                        <a href="javascript:CerrarSesionResultados();" style=" font-family:Arial; color: White; font-weight:bold; font-size:15px;">Cerrar Sesión</a>
+                    </td>
+                </tr>
+            </table>
+            <!--<a data-role="button" data-click="abrirMenuUsuario" style="background-color:transparent; border-width:0px; margin:0px;"><img id="imgBtnRegresar" src="../Recursos/Imagenes/Botones/btnRegresar2.png" /></a>-->
+        </div>
+    </div>
+    <div style="background-color:#0061ae; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style="background-color:#e4051f; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style=" height:768px; position:absolute; left:0px; background-color:#0061ae; z-index:2; text-align:left; width:198px;">
+        <img id="btnMenuRegresarResultados" onclick="regresarResultados()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar_Selected.png'"
+             src="../Recursos/Imagenes/Botones/BtnMenuRegresar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar.png'" height="74px" width="220px" />
+        <br />
+    </div>
+    <div style="position:absolute; height:768px; z-index:10; width:90%; left:250px; text-align:center;">
+        <table align="left" width="88%" style="border-collapse:collapse;">
+            <tr>
+                <td width="100%" align="left" valign="middle">
+                    <br />
+                    <table width="85%">
+                        <tr>
+                            <td width="55%">
+                                <label id="lblclavepayment" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">C</a>lave:
+                                </label>
+                                <input type="text" id="txtclavepayment" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="55%">
+                                <label id="lbldescriptionpayment" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">D</a>escripcion:
+                                </label>
+                                <input type="text" id="txtdescriptionpayment" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="20%">
+                                <img id="btnbuscapayment" onclick="cargaPayments()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnBuscar_Selected.png'"
+                                     src="../Recursos/Imagenes/Botones/BtnBuscar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnBuscar.png'" height="30px" width="100px" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="25%">
+                    <br />
+
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <hr style=" border-style: solid; border-color:#b2b2b2;" />
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <div id="gvpayments">
+                    </div>
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <br />
+                <br />
+                <td width="100%" align="left" valign="middle">
+                    <label id="lblTitle" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                        <a style="color:#e4051f;">A</a>gregar Payment
+                    </label>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="left" valign="middle">
+                    <br />
+                    <table width="85%">
+                        <tr>
+                            <td width="30%">
+                                <label id="lblclavepaymentadd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">C</a>lave:
+                                </label>
+                                <input type="text" id="txtclavepaymentadd" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="30%">
+                                <label id="lbldescriptionpaymentadd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">C</a>lave:
+                                </label>
+                                <input type="text" id="txtdescriptionpaymentadd" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="30%">
+                                <label id="lblvalorpaymentadd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">C</a>lave:
+                                </label>
+                                <input type="text" id="txtvalorpaymentadd" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="right">
+                    <img id="btnAddpayment" onclick="Addpayment()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnAdd_Selected.png'"
+                         src="../Recursos/Imagenes/Botones/BtnAdd.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnAdd.png'" height="30px" width="100px" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<style>
+    .roundedTextBox {
+        border-radius: 8px;
+        font-size: 24px;
+    }
+
+    .k-i-calendar {
+        height: 10px;
+        margin: 0 3px;
+    }
+
+    .breakWord120 {
+        word-break: break-all !important;
+        word-wrap: break-word !important;
+    }
+
+    #grid {
+        width: 490px;
+    }
+
+    .k-grid tbody tr {
+        height: 38px;
+    }
+
+    .k-grid td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<script>
+    function InicializaCATPayments() {
+
+        cargaPayments();
+
+    }
+</script>
+
+<script>
+    function Addpayment() {
+        var paymentclave = document.getElementById("txtclavepaymentadd").value;
+        var paymentdesc = document.getElementById("txtdescriptionpaymentadd").value;
+        var paymentvalor = document.getElementById("txtvalorpaymentadd").value;        
+
+        if (paymentclave == "" || paymentdesc == "" || paymentvalor == "") {
+            mostrarAlertaCatpayment("Error", "No deben ir datos en blanco.");
+        } else {
+            var dspaymentexistente = CallStoredObj("selpayments", { clave: paymentclave  });
+            if (dspaymentexistente.length > 0) {
+                mostrarAlertaCatpayment("Error", "El Registro ya existe.");
+            }
+            else {
+                CallStoredObj("Inspayment", { clave: paymentclave, desc:paymentdesc, valor: paymentvalor });
+                mostrarAlertaCatpayment("Exito", "Registro Agregado.");
+                document.getElementById("txtclavepaymentadd").value = '';
+                document.getElementById("txtdescriptionpaymentadd").value = '';
+                document.getElementById("txtvalorpaymentadd").value = '';
+                cargaPayments();
+            }
+
+        }
+
+    }
+</script>
+
+<script>
+    function mostrarAlertaCatpayment(tipoAlerta, mensaje) {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+
+        //        venAlerta.wrapper.addClass('transparentStyle');
+
+        venAlerta.title(false);
+        //        $winContentSpan = venAlerta.wrapper.find('.k-window-content');
+        //        $winContentSpan.addClass('transparentStyle');
+
+        if (tipoAlerta == "error") {
+            document.getElementById("imgIconoAlerta").src = "../Recursos/Imagenes/Iconos/AlertaIconoError.png";
+        }
+
+        document.getElementById("lblMensajeAlerta").innerHTML = mensaje;
+
+        venAlerta.center().open();
+    }
+</script>
+
+<script>
+    function cerrarAlertaLogin() {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+        venAlerta.close();
+    }
+</script>
+
+<script>
+    function DeletePayment(e) {
+        e.preventDefault();
+
+        var gridpayments = $("#gvpayments").data("kendoGrid");
+
+        var dataItem = gridpayments.dataItem($(e.currentTarget).closest("tr"));
+
+        var Delpaymentclave = dataItem.Clave
+
+        CallStoredObj("Delpayment", { clave: Delpaymentclave });
+
+        mostrarAlertaCatpayment("Exito", "Payment Eliminado.");
+
+        cargaPayments();
+    }
+</script>
+
+<script>
+    function cargaPayments() {
+
+        var Bpaymentclave = document.getElementById("txtclavepayment").value;
+        var Bpaymentdesc = document.getElementById("txtdescriptionpayment").value;
+        //var Bpaymentvalor = document.getElementById("txtvalorpayment").value;        
+
+        dspaymentsE = CallStoredObj("selpayments", { clave: Bpaymentclave,desc: Bpaymentdesc });
+
+        var gridLog = $("#gvpayments").kendoGrid({
+            //toolbar: ["excel"],
+            resizable: true,
+            //excel: {
+            //    fileName: "Kendo UI Grid Export.xlsx",
+            //    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+            //    filterable: true
+            //},
+
+            dataSource: {
+                data: dspaymentsE
+            },
+            pageable: false,
+            height: 150,
+            maxHeight: 550,
+            filterable: {
+                extra: false,
+                operators: {
+                    string: {
+                        startswith: "Empieza con",
+                        contains: "Contiene",
+                        eq: "Igual a",
+                        neq: "No igual a"
+                    }
+                }
+            },
+            sortable: true,
+            columns: [
+                { field: "Clave", title: "Clave", width: "70px" },
+                { field: "Descripcion", title: "Descripcion", width: "70px" },
+                { field: "Valor", title: "Valor", width: "70px" },
+                { template: "<img src='../Recursos/Imagenes/Botones/BtnDelSucursal.png' id='imgBtnDelPayment_${uid}'  style='cursor: pointer;' onclick=\"DeletePayment(event)\" height='30px' width='85px'/>", title: "", width: "30px" }
+            ]
+
+        }).data("kendoGrid");
+
+    }
+</script>
+
+<script>
+    function refrescaGridPayments() {
+        $("#gvpayments").empty();
+        try {
+            $("#gvpayments").data("kendoGrid").destroy();
+        }
+        catch (err) {
+
+        }
+        cargaPayments();
+    }
+</script>
+
+<script>
+    function IrAMenuPrincipal() {
+        app.navigate("../Views/login/login.html");
+    }
+</script>
+
+<script>
+    function regresarResultados() {
+        app.navigate("../Views/Administrador/MenuEcommerce.html");
+    }
+</script>
+
+<script>
+    function CerrarSesionResultados() {
+        app.navigate("../Views/Login/Login.html");
+    }
+</script>

@@ -1,0 +1,345 @@
+﻿<div data-role="view" data-title="EcommerceMadisa" data-layout="main" style="" data-init="Inicializaadministrador" data-reload="true">
+    <div style="background-color:#b2b2b2; height:70px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+        <div style="text-align:left; width:50%;">
+            &nbsp;
+            <img src="" width="188px" style="cursor: pointer;" onclick="IrAMenuPrincipal()" />
+            <!--<a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;">SOS Madisa</a>-->
+        </div>
+        <div style="text-align:right; width:50%; vertical-align:middle; height:80px;">
+            <table style="height:79px;" align="right">
+                <tr>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;"><label id="lblUserNameResultados"></label></a>
+                    </td>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;">&nbsp;|&nbsp;</a>
+                    </td>
+                    <td>
+                        <a href="javascript:CerrarSesionResultados();" style=" font-family:Arial; color: White; font-weight:bold; font-size:15px;">Cerrar Sesión</a>
+                    </td>
+                </tr>
+            </table>
+            <!--<a data-role="button" data-click="abrirMenuUsuario" style="background-color:transparent; border-width:0px; margin:0px;"><img id="imgBtnRegresar" src="../Recursos/Imagenes/Botones/btnRegresar2.png" /></a>-->
+        </div>
+    </div>
+    <div style="background-color:#0061ae; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style="background-color:#e4051f; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style=" height:768px; position:absolute; left:0px; background-color:#0061ae; z-index:2; text-align:left; width:198px;">
+        <img id="btnMenuRegresarResultados" onclick="regresarResultados()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar_Selected.png'"
+             src="../Recursos/Imagenes/Botones/BtnMenuRegresar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar.png'" height="74px" width="220px" />
+        <br />
+        <img id="btnMenuEcommerce" onclick="IraMenuEcommerce()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuEcommerce_Selected.png'"
+             src="../Recursos/Imagenes/Botones/BtnMenuEcommerce.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuEcommerce.png'" height="74px" width="220px" />
+        <br />
+        <img id="btnMenuTiempos" onclick="IraMenuTiempos()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuTiempos_Selected.png'"
+             src="../Recursos/Imagenes/Botones/BtnMenuTiempos.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuTiempos.png'" height="74px" width="220px" />
+        <br />
+    </div>
+    <div style="position:absolute; height:768px; z-index:10; width:90%; left:250px; text-align:center;">
+        <table align="left" width="88%" style="border-collapse:collapse;">
+            <tr>
+                <td width="100%" align="left" valign="middle">
+                    <br />
+                    <table width="85%">
+                        <tr>
+                            <td width="25%">
+                                <label id="lblFechas" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">F</a>echa: <a style="color:#e4051f;">D</a>esde
+                                </label>
+                                <input type="text" id="dtpFechaDesde" class="roundedTextBox" onchange="refrescaGridLog()" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="25%">
+                                <label id="lblFechaHasta" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">H</a>asta:
+                                </label>
+                                <input type="text" id="dtpFechaHasta" class="roundedTextBox" onchange="refrescaGridLog()" style="width:150px; color:Black; font-size:20px;" />
+                            </td>
+                            <td width="5%">
+                                <label id="lblOrdenvtex" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">O</a>rden:
+                                </label>
+                            </td>
+                            <td width="10%">
+                                <input type="text" id="txtOrdenvtex" class="roundedTextBox" onchange="refrescaGridLog()" style="width:150px; color:Black; font-size:20px;" />
+                            </td>
+                            <!--<td width="20%">
+                                <img id="btnordenvtex" onclick="cargaLog()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar_Selected.png'"
+                                     src="../Recursos/Imagenes/Botones/BtnMenuRegresar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar.png'" height="74px" width="220px" />
+                            </td>-->
+                        </tr>
+                    </table>
+                    <!--                    <img id="imgBtnAgregarNuevaMuestra" onclick="abrirVentanaAgregarNuevaMuestra()" onmouseover="this.src='../../../Recursos/Imagenes/Botones/BtnAgregarMuestra_Selected.png'"
+                                    onmouseout="this.src='../../../Recursos/Imagenes/Botones/BtnAgregarMuestra.png'" src="../../../Recursos/Imagenes/Botones/BtnAgregarMuestra.png" height="47" width="156"/>-->
+                </td>
+                <td width="25%">
+                    <br />
+
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <hr style=" border-style: solid; border-color:#b2b2b2;" />
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <div>
+                        <button id="export" onclick="ExportaraExcel()">Export Detail to Excel</button>
+                    </div>
+                    <div id="gvLog">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <div id="gvLogDetalle" style="display:none">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<style>
+    .roundedTextBox {
+        border-radius: 8px;
+        font-size: 24px;
+    }
+
+    .k-i-calendar {
+        height: 10px;
+        margin: 0 3px;
+    }
+
+    .breakWord120 {
+        word-break: break-all !important;
+        word-wrap: break-word !important;
+    }
+
+    #grid {
+        width: 490px;
+    }
+
+    .k-grid tbody tr {
+        height: 38px;
+    }
+
+    .k-grid td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<script>
+    function Inicializaadministrador() {
+
+        $("#dtpFechaDesde").kendoDatePicker();
+        $("#dtpFechaHasta").kendoDatePicker();
+
+        // Obtiene fecha del dia -----------------------------------
+        $("#dtpFechaDesde").kendoDatePicker({
+            value: new Date(2013, 10, 10)
+        });
+
+        var datepickerD = $("#dtpFechaDesde").data("kendoDatePicker");
+
+        datepickerD.value(new Date());
+
+        $("#dtpFechaHasta").kendoDatePicker({
+            value: new Date(2013, 10, 10)
+        });
+
+        var datepickerH = $("#dtpFechaHasta").data("kendoDatePicker");
+
+        datepickerH.value(new Date());
+        //--------------------------------------------------------------------------------
+
+
+        cargaLog();
+
+    }
+</script>
+
+<script>
+    function cargaLogDetalle() {
+
+        var dsLogDetalle;
+
+        var fechaDesde = document.getElementById("dtpFechaDesde").value;
+        var fechaHasta = document.getElementById("dtpFechaHasta").value;
+        var Ordervtex = document.getElementById("txtOrdenvtex").value;
+
+        dsLogDetalle = CallStoredObj("SelLogDetalle", { fechaDesde: fechaDesde, fechaHasta: fechaHasta, ordenvtex: Ordervtex });
+
+        var gridLogDetalle = $("#gvLogDetalle").kendoGrid({
+            //toolbar: ["excel"],
+            resizable: true,
+            //excel: {
+            //    fileName: "Kendo UI Grid Export.xlsx",
+            //    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+            //    filterable: true
+            //},
+
+            dataSource: {
+                data: dsLogDetalle
+            },
+            pageable: false,
+            height: 250,
+            maxHeight: 550,
+            filterable: {
+                extra: false,
+                operators: {
+                    string: {
+                        startswith: "Empieza con",
+                        contains: "Contiene",
+                        eq: "Igual a",
+                        neq: "No igual a"
+                    }
+                }
+            },
+            sortable: true,
+            columns: [
+                { field: "ordervtex", title: "Orden Vtex", width: "70px" },
+                { field: "json", title: "Json", width: "60px" },
+                { field: "fecha", title: "Fecha", width: "70px" },
+                { field: "tipoOrden", title: "Tipo Orden", width: "60px" },
+                { field: "IdGuid", title: "IdGuid", width: "60px" },
+                { field: "Request", title: "Request", width: "70px" },
+                { field: "Response", title: "Response", width: "70px" },
+                { field: "Nombre", title: "Nombre", width: "70px" },
+            ]
+
+
+        }).data("kendoGrid");
+
+
+        gridLogDetalle.saveAsExcel();
+
+
+    }
+
+</script>
+
+<script>
+    function ExportaraExcel() {
+        cargaLogDetalle();
+    }
+
+</script>
+
+<script>
+    function cargaLog() {
+
+        var dsLogrequest;
+
+        var fechaDesde = document.getElementById("dtpFechaDesde").value;
+        var fechaHasta = document.getElementById("dtpFechaHasta").value;
+        var Ordervtex = document.getElementById("txtOrdenvtex").value;
+
+        dsLogrequest = CallStoredObj("selLog", { fechaDesde: fechaDesde, fechaHasta: fechaHasta, ordenvtex: Ordervtex });
+
+        var gridLog = $("#gvLog").kendoGrid({
+            //toolbar: ["excel"],
+            resizable: true,
+            //excel: {
+            //    fileName: "Kendo UI Grid Export.xlsx",
+            //    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+            //    filterable: true
+            //},
+
+            dataSource: {
+                data: dsLogrequest
+            },
+            pageable: false,
+            height: 250,
+            maxHeight: 550,
+            filterable: {
+                extra: false,
+                operators: {
+                    string: {
+                        startswith: "Empieza con",
+                        contains: "Contiene",
+                        eq: "Igual a",
+                        neq: "No igual a"
+                    }
+                }
+            },
+            sortable: true,
+            columns: [
+                { field: "ordenvtex", title: "Orden Vtex", width: "70px" },
+                { field: "fecha", title: "Fecha", width: "60px" },
+                { field: "documentoDBS", title: "documentoDBS", width: "70px" },
+                { field: "tipoorden", title: "Tipo Orden", width: "60px" },
+                { field: "estatus", title: "Estatus", width: "60px" },
+                { field: "mensajeDBS", title: "Mensaje DBS", width: "70px" },
+            ]
+
+
+        }).data("kendoGrid");
+
+    }
+
+
+
+    //function cmbClientesUsuarioResultadosOnChange() {
+    //    document.getElementById("hdIdClienteSeleccionado").value = document.getElementById("cmbClientesResultadosUsuarioInterno").value;
+    //    cargaResultados();
+    //}
+</script>
+
+<script>
+    function refrescaGridLog() {
+        $("#gvLog").empty();
+        try {
+            $("#gvLog").data("kendoGrid").destroy();
+        }
+        catch (err) {
+
+        }
+        cargaLog();
+
+        //$("#gvLogDetalle").empty();
+        //try {
+        //    $("#gvLogDetalle").data("kendoGrid").destroy();
+        //}
+        //catch (err) {
+
+        //}
+        //cargaLogDetalle();
+    }
+</script>
+
+<script>
+    function IrAMenuPrincipal() {
+        app.navigate("../Views/login/login.html");
+    }
+</script>
+
+<script>
+    function regresarResultados() {
+        app.navigate("../Views/Login/Login.html");
+    }
+</script>
+
+<script>
+    function IraMenuTiempos() {
+        app.navigate("../Views/Administrador/MenuTiempos.html");
+    }
+</script>
+
+<script>
+    function IraMenuEcommerce() {
+        app.navigate("../Views/Administrador/MenuEcommerce.html");
+    }
+</script>
+
+<script>
+    function CerrarSesionResultados() {
+        app.navigate("../Views/Login/Login.html");
+    }
+</script>

@@ -1,0 +1,156 @@
+﻿<div data-role="view" data-layout="main" data-title="Login" data-reload="true" data-init="InicializarControlesLogin" style="">
+    <table width="100%" align="center" style=" height:800px; background-image:url('../Recursos/Imagenes/Layout/hexagonBack.png'); background-position:center; background-repeat:no-repeat; border-collapse:collapse; background-color:White;">
+        <tr>
+            <td style=" height:100%; vertical-align:middle;">
+                <table width="450px" border="0" align="center" style=" height:476px; vertical-align:middle; border-radius:10px; background-color: #C8C8C8; z-index:50; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <tr>
+                        <td style=" width:100%; height:132px;" align="center" valign="top">
+                            <br />
+                            <label id="lblLogin" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                <a style="color:#e4051f;">L</a>ogin <a style="color:#e4051f;">E</a>commerce
+                            </label>
+                            <br />
+                            <br />
+                            <img src="../Recursos/Imagenes/Iconos/Ecommerce_logo.png" width="338px" height="132px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style=" width:100%; height:68px; background-image:url('../Recursos/Imagenes/Layout/LoginUserName_back.png'); background-repeat:no-repeat; background-position:left;" align="center">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="txtNombreUsuario" style="height:60px; border-style:none; width:340px; font-size:24px;" placeholder="Nombre de Usuario" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=" width:100%; height:68px; background-image:url('../Recursos/Imagenes/Layout/LoginPassword_back.png'); background-repeat:no-repeat; background-position:right;" align="right">
+                            <input type="password" id="txtPassword" style="height:60px; border-style:none; width:395px; font-size:24px;" placeholder="*****" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100%" style="height:80px;" align="center">
+                            <img style=" cursor:pointer;" onclick="ValidarUsuario()" id="imgBtnIniciarSesion" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnIniciarSesion_Selected.png'"
+                                 src="../Recursos/Imagenes/Botones/BtnIniciarSesion.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnIniciarSesion.png'" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="customKendoWindowStyle">
+        <div id="ventanaAlertaLogin" style="display: none;">
+            <table align="center" width="100%">
+                <tr>
+                    <td width="150px">
+                        <img id="imgIconoAlerta" height="130px" width="150px" />
+                    </td>
+                    <td width="450px" align="center">
+                        <label id="lblMensajeAlerta" style=" font-family:Arial; font-size: 22px;"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" colspan="2" align="center">
+                        <img id="imgBtnAceptarAlerta" style="cursor:pointer;" src="../Recursos/Imagenes/Botones/BtnAceptar.png" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnAceptar_Selected.png'"
+                             onmouseout="this.src='../Recursos/Imagenes/Botones/BtnAceptar.png'" height="47" width="156" onclick="cerrarAlertaLogin()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .transparentStyle {
+        background: transparent;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        border-width: 0px;
+    }
+
+    .customKendoWindowStyle {
+        background: transparent;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        border-width: 0px;
+    }
+</style>
+
+<script>
+    function InicializarControlesLogin() {
+        //------------------------- Inicializar Ventanas ----------------------------------
+        var ventanaAlerta = $("#ventanaAlertaLogin");
+
+        ventanaAlerta.kendoWindow({
+            width: "600px",
+            height: "200px",
+            title: "",
+            modal: true,
+            resizable: false,
+            visible: false,
+            actions: [
+            ]
+        }).data("kendoWindow").center();
+        //---------------------------------------------------------------------------------
+    }
+</script>
+
+<script>
+    function ValidarUsuario() {
+        var nombreUsuario = document.getElementById("txtNombreUsuario").value;
+        var password = document.getElementById("txtPassword").value;
+
+        if (nombreUsuario == 'admin' && password == 'admin') {
+            app.navigate("../Views/Administrador/InicioAdministrador.html");
+        }
+        else {
+                mostrarAlertaLogin("error", "Usuario o password incorrecto.");
+                //alert("Usuario o password incorrecto.");
+         }
+
+        //try {
+        //    var valido = CallStoredObj("ValidaUsuario", { UserName: nombreUsuario, Password: password });
+        //    if (valido.length > 0) {
+        //        document.getElementById("hdIdUsuario").value = valido[0].IdUsuario;
+        //        document.getElementById("hdIdRol").value = valido[0].idRol;
+        //        document.getElementById("hdNomUsuario").value = valido[0].NomUsuario;
+        //        document.getElementById("hdIdCliente").value = valido[0].idCliente;
+        //        document.getElementById("hdIdEmpresa").value = valido[0].idEmpresa;
+        //        document.getElementById("hdTipoUsuario").value = valido[0].TipoUsuario;
+        //        if ((valido[0].idRol == 1 || valido[0].idRol == 2) && (valido[0].TipoUsuario == "Externo" || valido[0].TipoUsuario == "Interno")) {
+        //            app.navigate("../Views/UsuariosExternos/Administrador/InicioAdministrador.html");
+        //        }
+        //        if (valido[0].idRol == 3 && valido[0].TipoUsuario == "Externo") {
+        //            app.navigate("../Views/UsuariosExternos/JefeLaboratorio/InicioJefeLaboratorio.html");
+        //        }
+
+        //    } else {
+        //        mostrarAlertaLogin("error", "Usuario o password incorrecto.");
+        //        //alert("Usuario o password incorrecto.");
+        //    }
+        //} catch (e) {
+        //    alert("Ha ocurrido un error. Favor de contactar a sistemas.");
+        //}
+    }
+</script>
+
+<script>
+    function mostrarAlertaLogin(tipoAlerta, mensaje) {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+
+//        venAlerta.wrapper.addClass('transparentStyle');
+
+        venAlerta.title(false);
+//        $winContentSpan = venAlerta.wrapper.find('.k-window-content');
+        //        $winContentSpan.addClass('transparentStyle');
+
+        if (tipoAlerta == "error") {
+            document.getElementById("imgIconoAlerta").src = "../Recursos/Imagenes/Iconos/AlertaIconoError.png";
+        }
+
+        document.getElementById("lblMensajeAlerta").innerHTML = mensaje;
+
+        venAlerta.center().open();
+    }
+
+    function cerrarAlertaLogin() {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+        venAlerta.close();
+    }
+</script>

@@ -1,0 +1,368 @@
+﻿<div data-role="view" data-title="CATTiemposSucursales" data-layout="main" style="" data-init="InicializaCATTiemposSucursales" data-reload="true">
+    <div style="background-color:#b2b2b2; height:70px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+        <div style="text-align:left; width:50%;">
+            &nbsp;
+            <img src="" width="188px" style="cursor: pointer;" onclick="IrAMenuPrincipal()" />
+        </div>
+        <div style="text-align:right; width:50%; vertical-align:middle; height:80px;">
+            <table style="height:79px;" align="right">
+                <tr>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;"><label id="lblUserNameResultados"></label></a>
+                    </td>
+                    <td>
+                        <a style=" font-family:Arial; color: White; font-weight:bold; font-size:20px;">&nbsp;|&nbsp;</a>
+                    </td>
+                    <td>
+                        <a href="javascript:CerrarSesionResultados();" style=" font-family:Arial; color: White; font-weight:bold; font-size:15px;">Cerrar Sesión</a>
+                    </td>
+                </tr>
+            </table>
+            <!--<a data-role="button" data-click="abrirMenuUsuario" style="background-color:transparent; border-width:0px; margin:0px;"><img id="imgBtnRegresar" src="../Recursos/Imagenes/Botones/btnRegresar2.png" /></a>-->
+        </div>
+    </div>
+    <div style="background-color:#0061ae; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style="background-color:#e4051f; height:4px; vertical-align:middle; width:100%; display:flex; justify-content:space-between;">
+    </div>
+    <div style=" height:768px; position:absolute; left:0px; background-color:#0061ae; z-index:2; text-align:left; width:198px;">
+        <img id="btnMenuRegresarResultados" onclick="regresarResultados()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar_Selected.png'"
+             src="../Recursos/Imagenes/Botones/BtnMenuRegresar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnMenuRegresar.png'" height="74px" width="220px" />
+        <br />
+    </div>
+    <div style="position:absolute; height:768px; z-index:10; width:90%; left:250px; text-align:center;">
+        <table align="left" width="88%" style="border-collapse:collapse;">
+            <tr>
+                <td width="100%" align="left" valign="middle">
+                    <br />
+                    <table width="85%">
+                        <tr>
+                            <td width="32%">
+                                <label id="lblSucOrigen" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">S</a>ucursal Origen:
+                                </label>
+                                <select id="cmbSucOrigen" class="roundedTextBox" style="width:70%">
+                                </select>
+                            </td>
+                            <td width="32%">
+                                <label id="lblSucDestino" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">S</a>ucursal Destino:
+                                </label>
+                                <select id="cmbSucDestino" class="roundedTextBox" style="width:70%">
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <img id="btnbuscatiempo" onclick="cargaTiemposSucursales()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnBuscar_Selected.png'"
+                                     src="../Recursos/Imagenes/Botones/BtnBuscar.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnBuscar.png'" height="30px" width="100px" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="25%">
+                    <br />
+
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <hr style=" border-style: solid; border-color:#b2b2b2;" />
+                </td>
+            </tr>
+            <tr>
+                <td width="90%" align="left" colspan="3">
+                    <div id="gvtiempossucursales">
+                    </div>
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <br />
+                <br />
+                <td width="100%" align="left" valign="middle">
+                    <label id="lblTitle" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                        <a style="color:#e4051f;">A</a>gregar Tiempo Sucursal
+                    </label>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="left" valign="middle">
+                    <br />
+                    <table width="100%">
+                        <tr>
+                            <td width="30%">
+                                <label id="lblsucursalOrigenAdd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">S</a>uc. Origen:
+                                </label>
+                                <select id="cmbSucOrigenAdd" class="roundedTextBox" style="width:70%">
+                                </select>
+                            </td>
+                            <td width="30%">
+                                <label id="lblsucursalDestinoAdd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">S</a>uc. Destino:
+                                </label>
+                                <select id="cmbSucDestinoAdd" class="roundedTextBox" style="width:70%">
+                                </select>
+                            </td>
+                            <td width="30%">
+                                <label id="lblsucursalDiasAdd" style="font-weight:bold; font-family:Arial; font-size:24px; color:#0061ae;">
+                                    <a style="color:#e4051f;">D</a>ias:
+                                </label>
+                                <input type="text" id="txtTiempoSucursalesdiasAdd" class="roundedTextBox" style="width:150px; :Black; font-size:20px;" />
+                            </td>
+                            <td width="10%">
+                                <img id="btnAddTiempoSucursal" onclick="AddTiempoSucursal()" style="z-index:1; cursor:pointer;" onmouseover="this.src='../Recursos/Imagenes/Botones/BtnAdd_Selected.png'"
+                                     src="../Recursos/Imagenes/Botones/BtnAdd.png" onmouseout="this.src='../Recursos/Imagenes/Botones/BtnAdd.png'" height="30px" width="100px" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<style>
+    .roundedTextBox {
+        border-radius: 8px;
+        font-size: 24px;
+    }
+
+    .k-i-calendar {
+        height: 10px;
+        margin: 0 3px;
+    }
+
+    .breakWord120 {
+        word-break: break-all !important;
+        word-wrap: break-word !important;
+    }
+
+    #grid {
+        width: 490px;
+    }
+
+    .k-grid tbody tr {
+        height: 38px;
+    }
+
+    .k-grid td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<script>
+    function InicializaCATTiemposSucursales() {
+
+        cargaTiemposSucursales();
+        cargaSucursalesCombo();
+    }
+</script>
+
+<script>
+    function cargaSucursalesCombo() {
+        var dsSucursalesCombo = CallStoredObj("SelSucursales", {});
+
+        var cmbsucO = $("#cmbSucOrigen");
+        cmbsucO.empty();
+
+        var cmbsucD = $("#cmbSucDestino");
+        cmbsucD.empty();
+
+        var cmbsucOA = $("#cmbSucOrigenAdd");
+        cmbsucOA.empty();
+
+        var cmbsucDA = $("#cmbSucDestinoAdd");
+        cmbsucDA.empty();
+
+        var cmbSucOrigenS = "<option value='0'>Seleccione</option>";
+        var cmbSucOrigenD = "<option value='0'>Seleccione</option>";
+        var cmbSucOrigenSA = "<option value='0'>Seleccione</option>";
+        var cmbSucOrigenDA = "<option value='0'>Seleccione</option>";
+        for (var i = 0; i < dsSucursalesCombo.length; i++) {
+            cmbSucOrigenS += "<option value='" + dsSucursalesCombo[i].stno + "'>" + (dsSucursalesCombo[i].stno + ".- " + dsSucursalesCombo[i].sucursal) + "</option>";
+            cmbSucOrigenD += "<option value='" + dsSucursalesCombo[i].stno + "'>" + (dsSucursalesCombo[i].stno + ".- " + dsSucursalesCombo[i].sucursal) + "</option>";
+            cmbSucOrigenSA += "<option value='" + dsSucursalesCombo[i].stno + "'>" + (dsSucursalesCombo[i].stno + ".- " + dsSucursalesCombo[i].sucursal) + "</option>";
+            cmbSucOrigenDA += "<option value='" + dsSucursalesCombo[i].stno + "'>" + (dsSucursalesCombo[i].stno + ".- " + dsSucursalesCombo[i].sucursal) + "</option>";
+        }
+
+        cmbsucO.append(cmbSucOrigenS);
+        cmbsucD.append(cmbSucOrigenD);
+        cmbsucOA.append(cmbSucOrigenSA);
+        cmbsucDA.append(cmbSucOrigenDA);
+    }
+</script>
+
+<script>
+    function AddTiempoSucursal() {
+        var SucursalOrigenA = document.getElementById("cmbSucOrigenAdd").value;
+        var SucursalDestinoA = document.getElementById("cmbSucDestinoAdd").value;
+        var DiasA = document.getElementById("txtTiempoSucursalesdiasAdd").value;
+
+        if (SucursalOrigenA == "0" || SucursalDestinoA == "0" || DiasA == "" || DiasA == "0") {
+            mostrarAlertacattiempossucursales("Error", "Debe seleccionar Sucursal Origen y Sucursal Destino y asignar dias mayores a 0.");
+        } else {
+            var dsTiemposSucursalesExistente = CallStoredObj("selTiempossucursales", { SucOrigen: SucursalOrigenA, SucDestino: SucursalDestinoA });
+            if (dsTiemposSucursalesExistente.length > 0) {
+                mostrarAlertacattiempossucursales("Error", "El Registro ya existe.");
+            }
+            else {
+                CallStoredObj("InsTiempoSucursalaSucursal", { SucOrigen: SucursalOrigenA, SucDestino: SucursalDestinoA, Dias: DiasA });
+                mostrarAlertacattiempossucursales("Exito", "Registro Agregado.");
+                document.getElementById("txtTiempoSucursalesdiasAdd").value = '';
+                cargaTiemposSucursales();
+            }
+
+        }
+
+    }
+</script>
+
+<script>
+    function mostrarAlertacattiempossucursales(tipoAlerta, mensaje) {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+
+        //        venAlerta.wrapper.addClass('transparentStyle');
+
+        venAlerta.title(false);
+        //        $winContentSpan = venAlerta.wrapper.find('.k-window-content');
+        //        $winContentSpan.addClass('transparentStyle');
+
+        if (tipoAlerta == "error") {
+            document.getElementById("imgIconoAlerta").src = "../Recursos/Imagenes/Iconos/AlertaIconoError.png";
+        }
+
+        document.getElementById("lblMensajeAlerta").innerHTML = mensaje;
+
+        venAlerta.center().open();
+    }
+</script>
+
+<script>
+    function cerrarAlertaLogin() {
+        var venAlerta = $("#ventanaAlertaLogin").data("kendoWindow");
+        venAlerta.close();
+    }
+</script>
+
+<script>
+    function DelTiempoSucursal(e) {
+        e.preventDefault();
+
+        var gridTiemposSucursalesDel = $("#gvtiempossucursales").data("kendoGrid");
+
+        var dataItem = gridTiemposSucursalesDel.dataItem($(e.currentTarget).closest("tr"));
+
+        var DelSucOrigen = dataItem.SucursalOrigen
+        var DelSucDestino = dataItem.SucursalDestino
+
+        CallStoredObj("DelTiempoSucursalaSucursal", { SucOrigen: DelSucOrigen, SucDestino: DelSucDestino });
+
+        mostrarAlertacattiempossucursales("Exito", "Tiempo Sucursal Eliminado.");
+
+        refrescaGridTiempossucursales();
+    }
+</script>
+
+<script>
+    function UpdTiempoSucursal(e, txtnuevodiasucursal) {
+        e.preventDefault();
+
+        var gridTiemposSucursalesUpd = $("#gvtiempossucursales").data("kendoGrid");
+
+        var dataItem = gridTiemposSucursalesUpd.dataItem($(e.currentTarget).closest("tr"));
+
+        var updnuevosdiassucursal = $('#' + txtnuevodiasucursal).val()
+        var updsucorigensucursales = dataItem.SucursalOrigen
+        var updsucdestinosucursales = dataItem.SucursalDestino
+        
+        CallStoredObj("UpdTiempoSucursalaSucursal", { sucorigen: updsucorigensucursales, sucdestino: updsucdestinosucursales, dias: updnuevosdiassucursal });
+
+        mostrarAlertacattiempossucursales("Exito", "Tiempo a sucursal modificado.");
+
+        cargaTiemposSucursales();
+    }
+</script>
+
+<script>
+    function cargaTiemposSucursales() {
+
+        var SucursalOrigen = document.getElementById("cmbSucOrigen").value;
+        var SucursalDestino = document.getElementById("cmbSucDestino").value;
+
+        dsTiemposSucursales = CallStoredObj("selTiempossucursales", { SucOrigen: SucursalOrigen, SucDestino: SucursalDestino });
+
+        var gridLog = $("#gvtiempossucursales").kendoGrid({
+            //toolbar: ["excel"],
+            resizable: true,
+            //excel: {
+            //    fileName: "Kendo UI Grid Export.xlsx",
+            //    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+            //    filterable: true
+            //},
+
+            dataSource: {
+                data: dsTiemposSucursales
+            },
+            pageable: false,
+            height: 150,
+            maxHeight: 550,
+            filterable: {
+                extra: false,
+                operators: {
+                    string: {
+                        startswith: "Empieza con",
+                        contains: "Contiene",
+                        eq: "Igual a",
+                        neq: "No igual a"
+                    }
+                }
+            },
+            sortable: true,
+            columns: [
+                { field: "SucursalOrigen", title: "Sucursal Origen", width: "70px" },
+                { field: "SucursalDestino", title: "Sucursal Destino", width: "70px" },
+                { field: "Dias", title: "Dias", width: "70px" },
+                { template: "<input type='number' value= #=Dias#  style='width:80px; height:20px' id = 'txtnuevodiasucursal${uid}' />", title: "Cambiar Dias", width: "50px", height: "15px" },
+                { template: "<img src='../Recursos/Imagenes/Botones/BtnUpdSucursal.png' id='imgBtnUpdTiempoSuc_${uid}'  style='cursor: pointer;' onclick=\"UpdTiempoSucursal(event,'txtnuevodiasucursal${uid}')\" height='30px' width='85px'/>", title: "", width: "30px" },
+                { template: "<img src='../Recursos/Imagenes/Botones/BtnDelSucursal.png' id='imgBtnDelTiempoSuc_${uid}'  style='cursor: pointer;' onclick=\"DelTiempoSucursal(event)\" height='30px' width='85px'/>", title: "", width: "30px" }
+            ]
+
+        }).data("kendoGrid");
+
+    }
+</script>
+
+<script>
+    function refrescaGridTiempossucursales() {
+        $("#gvtiempossucursales").empty();
+        try {
+            $("#gvtiempossucursales").data("kendoGrid").destroy();
+        }
+        catch (err) {
+
+        }
+        cargaTiemposSucursales();
+    }
+</script>
+
+<script>
+    function IrAMenuPrincipal() {
+        app.navigate("../Views/login/login.html");
+    }
+</script>
+
+<script>
+    function regresarResultados() {
+        app.navigate("../Views/Administrador/MenuTiempos.html");
+    }
+</script>
+
+<script>
+    function CerrarSesionResultados() {
+        app.navigate("../Views/Login/Login.html");
+    }
+</script>

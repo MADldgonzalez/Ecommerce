@@ -1,0 +1,30 @@
+﻿<div data-role="view" data-title="CATMapa" data-layout="main" style="" data-init="InicializaMapa" data-reload="true">
+    <div>
+        <div id="mapita" style="width: 615px; height: 400px"></div>
+    </div>
+</div>
+
+<script>
+    function InicializaMapa() {
+
+        cargaMapa();
+
+    }
+</script>
+
+<script>
+    function cargaMapa() {
+        alert('entre a inicializar')
+        //comprobamos si el navegador es compatible con los mapas de google
+        //if (GBrowserIsCompatible()) {
+            //instanciamos un mapa con GMap, pasándole una referencia a la capa o <div> donde queremos mostrar el mapa
+            var objmap = new GMap2(document.getElementById("mapita"));
+            //centramos el mapa en una latitud y longitud deseadas
+            objmap.setCenter(new GLatLng(40.407, -3.68), 5);
+            //añadimos controles al mapa, para interacción con el usuario
+            objmap.addControl(new GLargeMapControl());
+            objmap.addControl(new GMapTypeControl());
+            objmap.addControl(new GOverviewMapControl());;
+        
+    }
+</script>
