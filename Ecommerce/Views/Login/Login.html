@@ -96,7 +96,7 @@
         var nombreUsuario = document.getElementById("txtNombreUsuario").value;
         var password = document.getElementById("txtPassword").value;
 
-        if (nombreUsuario == 'admin' && password == 'admin') {
+        if (nombreUsuario == 'admin' && password == 'admin' || nombreUsuario == 'rito' && password == 'espinoza')  {
             app.navigate("../Views/Administrador/InicioAdministrador.html");
         }
         else {
